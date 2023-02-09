@@ -4,14 +4,15 @@
  * Module dependencies.
  */
 
-const http = require('http');
-const app = require('../app');
+import http from 'http';
+
+import { app } from '../app';
 
 /**
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
+function normalizePort(val: string) {
   const port = parseInt(val, 10);
 
   if (Number.isNaN(port)) {
@@ -38,7 +39,7 @@ app.set('port', port);
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+function onError(error: any) {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -72,6 +73,9 @@ const server = http.createServer(app);
 
 function onListening() {
   const addr = server.address();
+  if (addr === null) {
+    throw new Error('Address is null');
+  }
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   console.log(`Listening on ${bind}`); // eslint-disable-line no-console
 }
@@ -83,3 +87,5 @@ function onListening() {
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+export default server;
