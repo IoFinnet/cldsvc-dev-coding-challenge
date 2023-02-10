@@ -1,4 +1,5 @@
-const express = require('express');
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import express from 'express';
 
 const router = express.Router();
 
@@ -9,13 +10,17 @@ const router = express.Router();
         impact efficiency.
 */
 
-const TYPE_FILLED = 'FILLED'; // order matched entirely
-const TYPE_PARTIALLY_FILLED = 'PARTIALLY_FILLED'; // order matched partially and is pending in orderbook
-const TYPE_REJECTED = 'REJECTED'; // order failed to match
-const TYPE_PENDING = 'PENDING'; // order did not match and is pending in orderbook
+const OrderStatus = {
+  TYPE_FILLED: 'FILLED', // order matched entirely
+  TYPE_PARTIALLY_FILLED: 'PARTIALLY_FILLED', // order matched partially and is pending in orderbook
+  TYPE_REJECTED: 'REJECTED', // order failed to match
+  TYPE_PENDING: 'PENDING', // order did not match and is pending in orderbook
+} as const;
+
+type TOrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus];
 
 // eslint-disable-next-line no-unused-vars
-router.post('/order/submit', (req, res, next) => {
+router.post('/order/submit', (req: any, res: any, next: any) => {
   res.send({ message: 'Not implemented' });
 
   /*
@@ -34,7 +39,7 @@ router.post('/order/submit', (req, res, next) => {
 });
 
 // eslint-disable-next-line no-unused-vars
-router.get('/orderbook', (req, res, next) => {
+router.get('/orderbook', (req: any, res: any, next: any) => {
   res.send({ message: 'Not implemented' });
 
   /*
@@ -55,4 +60,4 @@ router.get('/orderbook', (req, res, next) => {
   */
 });
 
-module.exports = router;
+export default router;
