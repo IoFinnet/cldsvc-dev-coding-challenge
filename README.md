@@ -11,7 +11,7 @@ Please fork this repo and make all the necessary changes to complete the tasks t
 
 ## Task 1: Order matching
 
-Head to the `routes/index.js` file where you'll see an empty handler function for the `POST /order/submit` URL path. Inside of this function, implement the logic to accept buy and sell orders from the user which will either be matched against existing orders in the orderbook, added to the orderbook, or a combination of both.
+Head to the `routes/index.ts` file where you'll see an empty handler function for the `POST /order/submit` URL path. Inside of this function, implement the logic to accept buy and sell orders from the user which will either be matched against existing orders in the orderbook, added to the orderbook, or a combination of both.
 
 [Investopedia: What are orders?](https://www.investopedia.com/terms/o/order.asp)
 
